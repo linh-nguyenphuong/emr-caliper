@@ -1,0 +1,30 @@
+---
+test:
+  name: emr
+  description: This is an example benchmark for caliper, to test the backend DLT's
+    performance with simple account opening & querying transactions
+  workers:
+    type: local
+    number: 1
+  rounds:
+  - label: emr
+    description: Test description for the query performance of the deployed chaincode
+    txNumber: 1000
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 40
+    arguments:
+      test: 10
+    callback: /hyperledger/caliper/workspace/benchmarks/open.js
+monitors:
+  resource:
+  - module: docker
+    options:
+      # interval: 1 
+      containers:
+      - all
+
+
+  
+
